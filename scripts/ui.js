@@ -7,3 +7,7 @@ export const signUpSuccess = () => {
 export const onError = (error) => {
     messageContainer.innerHTML = "you've encountered a error"
 }
+
+export const signInSuccess = () => {
+    messageContainer.innerHTML = 'Sign In Success'
+}

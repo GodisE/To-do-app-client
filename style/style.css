@@ -1,8 +1,15 @@
+.todotag {
+    text-align: center;
+}
 
- 
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-.container {
-    display: flex;
-    justify-content: space-between;
-flex-direction: row
+.card {
+    /* margin: 0 auto;  */
+    float: none; 
+    /* margin-bottom: 10px;  */
 }

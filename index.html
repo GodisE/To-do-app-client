@@ -15,16 +15,17 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="./scripts/app.js"></script>
+    <link rel="stylesheet" href="./style/style.css" type="text/css"/>
+   
     <title>to-do-app</title>
   </head>
   <body>
     <div class="container  ">
-      <div class="message"></div>
-      <div class="row">
-        <div class="col-sm-6">
+     
+      <div class="row ">
+        <div class="col">
           <h2>New Users Sign Up Here!</h2>
-          <form action="" class="signUpContainer">
+          <form class="signUpContainer">
             <input type="text" name="username" placeholder="username" />
             <input type="text" name="password" placeholder="password" />
             <button type="submit">submit</button>
@@ -32,18 +33,18 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col">
           <h2>Returning Users Sign In Here!</h2>
-          <form action="" class="signInContainer">
-            <input type="text" name="userName" placeholder="username" />
+          <form class="signInContainer">
+            <input type="text" name="username" placeholder="username" />
             <input type="text" name="password" placeholder="password" />
             <button>submit</button>
           </form>
         </div>
       </div>
     </div>
-   
-      <div class="container" id="date">
+    <div class="message"></div>
+      <div class="container  d-none" id="date">
         
         <h1>January</h1>
         <p>Wed Jan 25, 2023</p>
@@ -100,16 +101,27 @@
           <div class="card" style="width: 5rem; height: 5rem;">28</div>
         <div class="card" style="width: 5rem; height: 5rem;">29</div>
         </div>
-        <div class="d-flex flex-wrap">
+        <div class="d-flex flex-wrap ">
           <div class="card" style="width: 5rem; height: 5rem;">30</div>
           <div class="card" style="width: 5rem; height: 5rem;">31</div>
         </div>
       </div>
     </div>
 
+    <div class="container" id="to-do-page">
+      <div class="card" style="width: 40rem; height: 40rem">
+      <div class="card-body">
+        <h1 class="todotag">To-Do's</h1>
+        <textarea name="to-do-list" id="" cols="50" rows="10" ></textarea>
+        <br>
+        <button type="submit">Submit To-do</button>
+      </div>
+    </div>
+    </div>
     
 
 
 
   </body>
+  <script type="module" src="./scripts/app.js"></script>
 </html>
