@@ -1,3 +1,7 @@
+import { store } from './store.js'
+
+
+
 export const signUp = (data) => {
 	return fetch(`http://localhost:8000/sign-up`, {
 		method: 'POST',
@@ -22,68 +26,96 @@ export const signIn = (data) => {
  
  
  
-  //LIST ACTIONS
+                     //LIST ACTIONS
  
 
-export const createList = (data) => {
+export const createList = () => {
 	return fetch(`http://localhost:8000/lists`), {
-		method: "POST",
 		headers: {
-			"Accept": "application/json",
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify(data)
+			Authorization : `Bearer ${store.userToken}`
+		}
 	}
 }
 
 
 
-export const showList = (data) => {
+export const showList = (id) => {
 	return fetch(`http://localhost:8000/lists/${id}`), {
 		method: "GET",
 		headers: {
-			"Accept": "application/json",
-			"Content-Type": "application/json"
+			"Authorization" : `Bearer ${store.userToken}`
 		},
-		body: JSON.stringify(data)
+	
 	}
 }
 
-export const indexList = (data) => {
+export const indexLists = () => {
 	return fetch(`http://localhost:8000/lists`), {
 		method: "GET",
 		headers: {
-			"Accept": "application/json",
-			"Content-Type": "application/json"
+			"Authorization" : `Bearer ${store.userToken}`
+
 		},
-		body: JSON.stringify(data)
+	
 	}
 }
 
-export const updateList = (data) => {
+export const updateList = (data, ID) => {
 	return fetch(`http://localhost:8000/lists/${id}`), {
 		method: "PATCH",
 		headers: {
 			"Accept": "application/json",
-			"Content-Type": "application/json"
+			"Content-Type": "application/json",
+			"Authorization" : `Bearer ${store.userToken}`
 		},
 		body: JSON.stringify(data)
 	}
 }
 
 
-export const deleteList = (data) => {
+export const deleteList = (id) => {
 	return fetch(`http://localhost:8000/lists/${id}`), {
-		method: "POST",
+		method: "DELETE",
 		headers: {
-			"Accept": "application/json",
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify(data)
+			"Authorization" : `Bearer ${store.userToken}`
+		}
+		
 	}
 }
 
 
 
+                     //ACTIVITY ACTIONS
 
+export const createAct = (data) => {
+	return fetch(`http://localhost:8000/list`), {
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization" : `Bearer ${store.userToken}`
+		},
+		body: JSON.stringify(data)
+	}
+}
 
+export const updateAct = (id, data) => {
+	return fetch(`http://localhost:8000/list/${id}`), {
+		method: "UPDATE",
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			"Authorization" : `Bearer ${store.userToken}`
+		},
+		body: JSON.stringify(data)
+	}
+}
+
+export const deleteAct = (id) => {
+	return fetch(`http://localhost:8000/list/${id}`), {
+		method: "DELETE",
+		headers: {
+			"Authorization" : `Bearer ${store.userToken}`
+		},
+		
+	}
+}

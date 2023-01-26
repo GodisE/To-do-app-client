@@ -19,14 +19,15 @@
    
     <title>to-do-app</title>
   </head>
-  <body>
-    <div class="container  ">
+  <body> 
+    
+    <div class="content-container  ">
      
       <div class="row ">
         <div class="col">
           <h2>New Users Sign Up Here!</h2>
           <form class="signUpContainer">
-            <input type="text" name="username" placeholder="username" />
+            <input type="text" name="userName" placeholder="username" />
             <input type="text" name="password" placeholder="password" />
             <button type="submit">submit</button>
           </form>
@@ -36,15 +37,15 @@
         <div class="col">
           <h2>Returning Users Sign In Here!</h2>
           <form class="signInContainer">
-            <input type="text" name="username" placeholder="username" />
+            <input type="text" name="userName" placeholder="username" />
             <input type="text" name="password" placeholder="password" />
-            <button>submit</button>
+            <input type="submit">
           </form>
         </div>
       </div>
     </div>
-    <div class="message"></div>
-      <div class="container  d-none" id="date">
+<div class="message"></div>
+      <div class="container  " id="date">
         
         <h1>January</h1>
         <p>Wed Jan 25, 2023</p>
@@ -108,17 +109,52 @@
       </div>
     </div>
 
-    <div class="container" id="to-do-page">
-      <div class="card" style="width: 40rem; height: 40rem">
-      <div class="card-body">
-        <h1 class="todotag">To-Do's</h1>
-        <textarea name="to-do-list" id="" cols="50" rows="10" ></textarea>
-        <br>
-        <button type="submit">Submit To-do</button>
+    <div class="container " id="index-list-container">
+
+     
+        
+       
       </div>
     </div>
     </div>
+    <div class="container " >
+         <h1 class="todotag">To-Do's</h1>
+        <form id="create-list-container" class="d-flex" method="POST">
+         
+          <input type="text" name="title" class="form-control" placeholder="Title Your To-do Here" id="title">
+          <input type="button" id="title-button">
+        </form>
+        <div id="create-act-container">
+        <form action="" id="create-act-form" class="d-flex">
+          <input type="text" name="name" class="form-control" placeholder="Enter Activity Name Here" id="act">
+          <input type="button">
+          <input type="text" name="location" class="form-control" placeholder="Enter The Location of Act Here">
+          <input type="button" id="add">
+        </form>
+      </div>
+</div>
+    <div id="list-container">
+      <ul id="list" class="list-group">
+        <!-- <li class="list-group-item">title
+          <li>activity</li>
+        </li>
+        <li class="list-group-item">title
+          <li>activity</li>
+        </li>
+        <li class="list-group-item">title
+          <li>activity</li>
+        </li>
+        <li class="list-group-item">title
+          <li>activity</li>
+        </li>
+        <li class="list-group-item">title
+          <li>activity</li>
+        </li> -->
+      </ul>
+    </div>
+     
     
+    <div class="container " id="show-list-container"></div>
 
 
 

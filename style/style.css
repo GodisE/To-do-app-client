@@ -1,6 +1,6 @@
 .todotag {
     text-align: center;
-}
+} 
 
 textarea {
     display: block;
@@ -9,7 +9,7 @@ textarea {
 }
 
 .card {
-    /* margin: 0 auto;  */
+    /* margin: 0 auto;   */
     float: none; 
     /* margin-bottom: 10px;  */
 }
