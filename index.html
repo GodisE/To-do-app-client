@@ -20,8 +20,8 @@
     <title>to-do-app</title>
   </head>
   <body> 
-    
-    <!-- <div class="content-container  ">
+    <div class="message"></div>
+     <div class="content-container  ">
      
       <div class="row ">
         <div class="col">
@@ -29,7 +29,7 @@
           <form class="signUpContainer">
             <input type="text" name="userName" placeholder="username" />
             <input type="text" name="password" placeholder="password" />
-            <button type="button">submit</button>
+            <button type="submit" id="sign-up">submit</button>
           </form>
         </div>
       </div>
@@ -44,8 +44,8 @@
         </div>
       </div>
     </div>
-<div class="message"></div>
-      <div class="container  " id="date">
+
+      <!-- <div class="container  " id="date">
         
         <h1>January</h1>
         <p>Wed Jan 25, 2023</p>
@@ -116,51 +116,54 @@
        
       </div>
     </div>
-    </div>
-
+    </div>  -->
+<!-- 
                                  LIST HTML -->
     <div class="container " >
          <h1 class="todotag">Create Your To-Do</h1>
+
         <form id="create-list-container" class="d-flex" method="POST">
-         
           <input type="text" name="title" class="form-control"  placeholder="Title Your To-do Here" id="title">
-          <input type="button" id="title-button"  value="Add Title">
+          <input type="submit" id="title-button"  value="Add Title">
         </form>
+
         <div id="create-act-container">
-        <form action="" id="create-act-form" class="d-flex">
+          
+        <form  id="create-act-form" class="d-flex">
           <input type="text" name="name" class="form-control" placeholder="Enter Activity Name Here" id="act">
-          <input type="submit" value="Add Activity">
-          <input type="text" name="location" class="form-control" placeholder="Enter The Location of Act Here">
-          <input type="submit" value="Add Location" id="add"></input>
+          <input type="text" name="location" class="form-control" placeholder="Enter The Location of Act Here" id="location">
+          <input type="checkbox" name="isComplete" id="isComplete" class="d-none">
+          <input type="button" value="Add name & Location" id="add"></input>
         </form>
+      
       </div>
 </div>
     <div id="index-lists-container">
       <h3>To Do List</h3>
-      <ul id="index-list" class="list-group d-flex">
-
-        <!-- <input type="checkbox"> -->
-        <!-- <li class="list-group-item">title -->
-          <!-- <li>activity</li>
-          </div>
-        </li>
-         <div class="d-flex"> -->
-        <!-- <li class="list-group-item">title
-          <li>activity</li>
-          </div>
-          <div class="d-flex">
-            <li class="list-group-item">title
-              <li>activity</li>
+          <ul class="list-group" id="index-list">
+            <div class="d-flex">
+            <input type="checkbox"/>
+            <li class="list-group-item">Cras justo odio</li>
+            </div>
+            <div class="d-flex">
+              <input type="checkbox"/>
+              <li class="list-group-item">Cras justo odio</li>
               </div>
               <div class="d-flex">
-                <li class="list-group-item">title
-                  <li>activity</li>
+                <input type="checkbox"/>
+                <li class="list-group-item">Cras justo odio</li>
+                <p>act</p>
+                </div>
+                <div class="d-flex">
+                  <input type="checkbox"/>
+                  <li class="list-group-item">Cras justo odio</li>
                   </div>
                   <div class="d-flex">
-                    <li class="list-group-item">title
-                      <li>activity</li> -->
-                      
-      </ul>
+                    <input type="checkbox"/>
+                    <li class="list-group-item">Cras justo odio</li>
+                    </div>
+          </ul>
+        
     </div>
      
     
