@@ -148,9 +148,21 @@ function addActToList(){
 
     //creating list element
     const li = document.createElement("li")
+
+const deleteButton = document.createElement("input")
+deleteButton.type= "button"
+deleteButton.value = "delete"
+
+const updateButton = document.createElement("input")
+updateButton.type = "button"
+updateButton.value = "update"
+
     //creating node element to list value of user input
     const node = document.createTextNode(act.value) 
     li.appendChild(node)
+    li.appendChild(updateButton)
+    li.appendChild(deleteButton)
+    console.log(li)
     document.getElementById("index-list").appendChild(li)
 
   
@@ -202,6 +214,7 @@ function isComplete() {
 
 createListContainer.addEventListener("click",  (event) => {
   event.preventDefault()
+  event.currentTarget.title.removeEventListener("click", (event))
     addTitleToList()
     isComplete()
     

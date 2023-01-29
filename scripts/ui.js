@@ -4,7 +4,7 @@ const indexListContainer = document.querySelector("#index-list-container")
 const showListContainer = document.querySelector("#show-list-container")
 const createListContainer = document.querySelector("#create-list-index")
 const signUpInContainers = document.querySelector(".content-container")
-
+const navBar = document.querySelector(".navbar")
 
 
 export const signUpSuccess = () => {
@@ -17,20 +17,25 @@ export const onError = () => {
 }
 
 export const signInSuccess = (userToken) => {
-    // messageContainer.innerHTML = 'Sign In Success'
-    // signUpInContainers.classList.add("d-none")
+    messageContainer.innerHTML = 'Sign In Success'
+    signUpInContainers.classList.add("d-none")
+    navBar.classList.remove("d-none")
     window.localStorage.setItem("token", userToken)
-    console.log(window.localStorage)
+
 }
 
 
 
-export const createListSuccess = () => {
+export const createListSuccess = (title) => {
+  window.localStorage.setItem("list-title", title)
+
   messageContainer.innerHTML = "You've created a list!"
+  
 }
 
-export const indexListSuccess = (lists) => {
-   lists.forEach((list) => {
+export const indexListSuccess = (lists, title) => {
+    window.localStorage.getItem("list-title", title)
+    lists.forEach((list) => {
     const div = document.createElement("div")
     div.classList.add("card")
     div.innerHTML = `
