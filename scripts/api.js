@@ -1,4 +1,4 @@
-
+import { store } from './store.js'
 
 
 
@@ -24,7 +24,20 @@ export const signIn = (data) => {
 	})
 }
  
- 
+
+// export const signOut = (userToken, data) => {
+// 	return fetch(`http://localhost:8000/sign-out`, {
+// 		method: "GET",
+// 		headers: {
+// 			"Accept": "application/json",
+// 			"Content-Type": "application/json",
+// 			'Authorization': `Bearer ${store.userToken}`,
+// 		},
+// 		body: JSON.stringify(data)
+// 	})
+// }
+
+
  
                      //LIST ACTIONS
  
@@ -32,7 +45,7 @@ export const signIn = (data) => {
 export const createList = (userToken) => {
 	return fetch(`http://localhost:8000/lists`, {
 		headers: {
-			"Authorization" : `Bearer ${"token", userToken}`
+			'Authorization': `Bearer ${store.userToken}`,
 		}
 	})
 }
@@ -43,7 +56,7 @@ export const showList = (id) => {
 	return fetch(`http://localhost:8000/lists/${id}`, {
 		method: "GET",
 		headers: {
-			"Authorization" : `Bearer ${"token", userToken}`
+			'Authorization': `Bearer ${store.userToken}`,
 		},
 	
 	})
@@ -53,7 +66,7 @@ export const indexLists = () => {
 	return fetch(`http://localhost:8000/lists`, {
 		method: "GET",
 		headers: {
-			"Authorization" : `Bearer ${"token", userToken}`
+			'Authorization': `Bearer ${store.userToken}`,
 
 		},
 	
@@ -66,7 +79,7 @@ export const updateList = (data, id) => {
 		headers: {
 			"Accept": "application/json",
 			"Content-Type": "application/json",
-			"Authorization" : `Bearer ${"token", userToken}`
+			'Authorization': `Bearer ${store.userToken}`,
 		},
 		body: JSON.stringify(data)
 	})
@@ -77,7 +90,7 @@ export const deleteList = (id) => {
 	return fetch(`http://localhost:8000/lists/${id}`, {
 		method: "DELETE",
 		headers: {
-			"Authorization" : `Bearer ${"token", userToken}`
+			'Authorization': `Bearer ${store.userToken}`,
 		}
 		
 	})
@@ -92,7 +105,7 @@ export const createAct = (data, userToken) => {
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json',
-			"Authorization" : `Bearer ${"token", userToken}`
+			'Authorization': `Bearer ${store.userToken}`,
 		},
 		body: JSON.stringify(data)
 	})
@@ -104,7 +117,7 @@ export const updateAct = (id, data) => {
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json',
-			"Authorization" : `Bearer ${"token", userToken}`
+			'Authorization': `Bearer ${store.userToken}`,
 		},
 		body: JSON.stringify(data)
 	})
@@ -114,7 +127,7 @@ export const deleteAct = (id) => {
 	return fetch(`http://localhost:8000/list/${id}`, {
 		method: "DELETE",
 		headers: {
-			"Authorization" : `Bearer ${"token", userToken}`
+			'Authorization': `Bearer ${store.userToken}`,
 		},
 		
 	})
