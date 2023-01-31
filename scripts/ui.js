@@ -39,7 +39,10 @@ export const createListSuccess = () => {
   
 }
 
-export const indexListSuccess = (userToken) => {
+export const indexListSuccess = (list) => {
+
+
+
         const div = document.createElement("div")
         div.innerHTML = `
        <h3>${list.title}</h3> 

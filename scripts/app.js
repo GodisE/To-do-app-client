@@ -67,16 +67,16 @@ signInContainer.addEventListener("submit", (event) => {
     
     .then((res) => res.json())
     .then((res) => signInSuccess(res.token))
-  
+  .catch(console.error);
    
-    indexLists()
-    .then((res) => {
-      indexListSuccess(res.list);
+    // indexLists()
+    // .then((res) => {
+    //   indexListSuccess(res.list);
     })
     
  
-    .catch(console.error);
-});
+    
+// });
 
 //List apps
 
@@ -94,8 +94,10 @@ createListForm.addEventListener("submit", (event) => {
     .then((res) => res.json())
     .then((res) => {
      indexListSuccess(res.list);
-    });
-  createListSuccess();
+     
+    })
+    .then
+  (createListSuccess());
 
   addTitleToList()
     indexLists()
