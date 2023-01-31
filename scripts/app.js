@@ -8,26 +8,20 @@ import {
   indexLists,
   createAct,
   deleteAct,
-
-
 } from "./api.js";
 import { store } from "./store.js";
 import {
-signUpSuccess,
-signInSuccess,
-createListSuccess,
-deleteListSuccess,
-updateListSuccess,
-showListSuccess,
-indexListSuccess,   
-onError,
-updateActSuccess,
-deleteActSuccess,
-createActSuccess,
-
- 
-  
- 
+  signUpSuccess,
+  signInSuccess,
+  createListSuccess,
+  deleteListSuccess,
+  updateListSuccess,
+  showListSuccess,
+  indexListSuccess,
+  onError,
+  updateActSuccess,
+  deleteActSuccess,
+  createActSuccess,
 } from "./ui.js";
 
 //grabbing each card in my html and adding a click event listener
@@ -43,6 +37,7 @@ const createActForm = document.querySelector("#create-act-form");
 const indexListsContainer = document.querySelector("#index-lists-container");
 const showListContainer = document.querySelector("#show-lists-container");
 const addActContainer = document.querySelector("#add-act-container");
+
 
 //user
 signUpContainer.addEventListener("submit", (event) => {
@@ -69,18 +64,21 @@ signInContainer.addEventListener("submit", (event) => {
     },
   };
   signIn(userData)
+    
     .then((res) => res.json())
     .then((res) => signInSuccess(res.token))
-    .then(indexLists)
-    .then((res) => res.json())
-    .then((res) => indexListSuccess(res.list))
+  
+   
+    indexLists()
+    .then((res) => {
+      indexListSuccess(res.list);
+    })
+    
+ 
     .catch(console.error);
 });
 
-
- //List apps
-
-
+//List apps
 
 createListForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -91,110 +89,114 @@ createListForm.addEventListener("submit", (event) => {
     },
   };
 
-console.log(listData)
+  console.log(listData);
   createList(listData)
-    .then((list) => {
-      createListSuccess(list.id)
-      console.log (list)
-      
-    })
-    .then((list) => {
-      addTitleToList()
-      console.log (list)
-      
-    })
+    .then((res) => res.json())
+    .then((res) => {
+     indexListSuccess(res.list);
+    });
+  createListSuccess();
 
-    .then(onError)
-    
-
+  addTitleToList()
+    indexLists()
+    .then((res) => res.json())
+    .then(console.error);
 });
 
-
-
 function addTitleToList() {
-
   //creating a div to
-  const div = document.createElement("div")
+  const div = document.createElement("div");
   //assigning a class to div
-  div.classList.add("list-group-item")
-  div.id = "#title-div"
- const button = document.createElement("input")
- button.type = "button"
- button.value = "show"
- button.dataset.id = Math.floor(math.random * 1000)
-console.log(button.dataset.id)
+  div.classList.add("list-group-item");
+  div.id = "#title-div";
 
   const input = document.createElement("input");
   input.type = "checkbox";
 
   div.appendChild(input);
 
-  //creating list element
-  const head = document.createElement("h3");
+
   //creating node element to list value of user input
   const node = document.createTextNode(title.value);
   if (node === "undefined") {
     div.style.display = "none";
     input.classList.add("d-none");
   }
-  div.appendChild(head);
-  div.appendChild(button)
-  head.appendChild(node);
-  document.getElementById("index-lists-container").appendChild(div, head);
 
-
-
-
+  document.getElementById("index-lists-container").appendChild(div);
 }
 
-
 indexListsContainer.addEventListener("click", (event) => {
+ 
   const id = event.target.getAttribute("data-id");
-  
+   console.log(id)
   if (!id) return;
 
   showList(id)
     .then((res) => res.json())
     .then((res) => {
-      showListSuccess(res.list)
+      showListSuccess(res.list);
     })
-    .catch(onError);
-    console.log(id)
+    .catch(console.error);
+
 });
 
 
+
+
+
+
+
 showListContainer.addEventListener("submit", (event) => {
-  console.log("clicked")
-  event.preventDefault()
+  event.preventDefault();
   const id = event.target.getAttribute("data-id");
-    console.log(id)
+  console.log(id);
+
+  if(!id) return
+
   const listData = {
     list: {
-      title: event.target["title"].value,
+      title: event.target["title"].value
     },
+  };
+  updateList(listData, id)
+  .then(updateListSuccess)
+  .catch(console.error);
+});
 
-}
-    updateList(listData, id)
-    .then(updateListSuccess)
-    .catch(console.error)
 
-})
+
+
+
+
+
+
+
+
 
 showListContainer.addEventListener("click", (event) => {
-  console.log("clicked")
-  event.preventDefault()
-  const id = event.target.getAttribute("data-id")
-  if (!id) return
+  event.preventDefault();
+  
+  const id = event.target.getAttribute("data-id");
+console.log(id);
+
+  if (!id) return;
+
+
+if(event.target.id === "delete-list-button"){
+  deleteList(id)
+  .then(deleteListSuccess)
+  .then(console.error)
+}
 
 
 
-})
+  deleteList(id)
+   .then(deleteListSuccess)
+   .catch(console.error)
+});
 
 
-// indexLists()
-// .then((res) => res.json())
-// .then((res) => indexListSuccess(res.list))
-// .catch(onError)
 
 //acts apps
 function addActToList() {
@@ -204,67 +206,45 @@ function addActToList() {
   div.classList.add("list-group-item");
 
   const newDiv = document.createElement("div");
-  newDiv.classList.add("list-group-item")
+  newDiv.classList.add("list-group-item");
 
   //creating list element
   const li = document.createElement("li");
-  const p = document.createElement("li")
+  const p = document.createElement("li");
 
-  const deleteButton = document.createElement("input");
-  deleteButton.type = "button";
-  deleteButton.value = "delete";
-  deleteButton.id = "delete";
-
-
-  const updateButton = document.createElement("input");
-  updateButton.type = "button";
-  updateButton.value = "update";
-  updateButton.id = "update";
 
   //creating node element to list value of user input
   const node = document.createTextNode(act.value);
-  const newNode = document.createTextNode(location.value)
+  const newNode = document.createTextNode(location.value);
 
- newDiv.appendChild(newNode)
- newDiv.appendChild(updateButton)
- newDiv.appendChild(deleteButton)
- 
+  newDiv.appendChild(newNode);
 
- div.appendChild(li)
- div.appendChild(p)
- div.appendChild(node)
+
+  div.appendChild(li);
+  div.appendChild(p);
+  div.appendChild(node);
 
   document.getElementById("index-lists-container").appendChild(div);
   document.getElementById("index-lists-container").appendChild(newDiv);
 }
 
-
-
-
-
 createActForm.addEventListener("submit", (event) => {
-  event.preventDefault()
+  event.preventDefault();
   const actData = {
     activity: {
       name: document.getElementsByName("name")[0].value,
       location: document.getElementsByName("location")[0].value,
       isComplete: document.getElementsByName("isComplete")[0].value,
-      listId: store.list.id,
+      // listId: list._id,
     },
-  }
-  
+  };
+
   console.log(actData);
   createAct(actData)
     .then(createListSuccess)
-    .then(addActToList()) 
-    .catch(onError)
-   
-})
-
-
-
-
-
+    .then(addActToList())
+    .catch(onError);
+});
 
 addActContainer.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -276,10 +256,8 @@ addActContainer.addEventListener("submit", (event) => {
       listId: store.list.id,
     },
   };
-  console.log(actData)
-  createAct(actData)
-  .then(createActSuccess)
-  .catch(onError);
+  console.log(actData);
+  createAct(actData).then(createActSuccess).catch(onError);
 });
 
 //calander app
@@ -290,6 +268,3 @@ cards.forEach((day) =>
     hide.classList.add("d-none");
   })
 );
-
-
-

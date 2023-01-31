@@ -75,8 +75,11 @@ export const indexLists = () => {
 			'Authorization': `Bearer ${store.userToken}`,
 
 		},
+		
+	},
+
+	)
 	
-	})
 }
 
 export const updateList = (data, id) => {
