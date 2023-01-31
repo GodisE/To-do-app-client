@@ -19,6 +19,7 @@ export const signIn = (data) => {
 		headers: {
 			"Accept": "application/json",
 			"Content-Type": "application/json"
+			
 		},
 		body: JSON.stringify(data)
 	})
@@ -42,11 +43,16 @@ export const signIn = (data) => {
                      //LIST ACTIONS
  
 
-export const createList = (userToken) => {
+export const createList = (data) => {
 	return fetch(`http://localhost:8000/lists`, {
+		method: "POST",
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
-		}
+			"Accept": "application/json",
+			"Content-Type": "application/json",
+
+		},
+		body: JSON.stringify(data)
 	})
 }
 
@@ -100,8 +106,9 @@ export const deleteList = (id) => {
 
                      //ACTIVITY ACTIONS
 
-export const createAct = (data, userToken) => {
+export const createAct = (data) => {
 	return fetch(`http://localhost:8000/list`, {
+		method:"POST",
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json',

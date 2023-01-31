@@ -18,6 +18,7 @@ export const onError = () => {
 }
 
 export const signInSuccess = (userToken) => {
+    console.log(userToken)
     messageContainer.innerHTML = 'Sign In Success'
     store.userToken = userToken
     signUpInContainers.classList.add("d-none")
@@ -31,34 +32,50 @@ export const signInSuccess = (userToken) => {
 export const createListSuccess = () => {
 
   messageContainer.innerHTML = "You've created a list!"
-
+ 
 
 
   
 }
 
-export const indexListSuccess = (listData) => {
-    const div = document.createElement("div")
+export const indexListSuccess = (lists) => {
+    lists.forEach((list) => {
+        const div = document.createElement("div")
+        div.innerHTML = `
+       <h3>${list.title}</h3> 
+       <h3>${list._id}</h3>
+       <button type="button" data-id="${list._id}">Show</button>
+        `
+        indexListsContainer.appendChild(div)
+    })
 
-
-
-    indexListsContainer.appendChild(div)
+    
    }
 
 
-export const showListSuccess = () => {
-   
+export const showListSuccess = (list) => {
+   const div = document.createElement('div')
+   div.innerHTML = `
+   <h3>${list.id}</h3>
+   <form data-id="${list.id}">
+   <input type="text" name="title" value="${list.title}" />
+   <input type="submit" value="Update List" />
+  
+</form>
+<button data-id="${list._id}">Delete List</button>
+   `
+   showListContainer.appendChild(div)
 }
 
 
-// export const updateListSuccess = () => {
-//    messageContainer.innerHTML = "Your list has been updated"
-// }
+export const updateListSuccess = () => {
+   messageContainer.innerHTML = "Your list has been updated"
+}
 
 
-// export const deleteListSuccess = () => {
-//    messageContainer.innerHTML = "Your list has been deleted"
-// }
+export const deleteListSuccess = () => {
+   messageContainer.innerHTML = "Your list has been deleted"
+}
 
 
 export const createActSuccess = () => {
