@@ -121,8 +121,8 @@ function addTitleToList() {
  const button = document.createElement("input")
  button.type = "button"
  button.value = "show"
-//  button.dataset.id = list.id
-// console.log(button.dataset.id)
+ button.dataset.id = Math.floor(math.random * 1000)
+console.log(button.dataset.id)
 
   const input = document.createElement("input");
   input.type = "checkbox";
@@ -249,6 +249,7 @@ createActForm.addEventListener("submit", (event) => {
       name: document.getElementsByName("name")[0].value,
       location: document.getElementsByName("location")[0].value,
       isComplete: document.getElementsByName("isComplete")[0].value,
+      listId: store.list.id,
     },
   }
   
@@ -272,9 +273,10 @@ addActContainer.addEventListener("submit", (event) => {
       name: document.getElementsByName("name")[0].value,
       location: document.getElementsByName("location")[0].value,
       isComplete: document.getElementsByName("isComplete")[0].value,
-      listId: store.currentListId,
+      listId: store.list.id,
     },
   };
+  console.log(actData)
   createAct(actData)
   .then(createActSuccess)
   .catch(onError);
