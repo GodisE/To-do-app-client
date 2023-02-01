@@ -53,7 +53,7 @@
                 aria-labelledby="navbarDarkDropdownMenuLink"
               >
                 <li>
-                  <a class="dropdown-item" href="./scripts/app.js">See Lists</a>
+                  <a class="dropdown-item" onclick="showIndexlists()">See Lists</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#"
@@ -66,154 +66,59 @@
         </div>
       </div>
     </nav>
-    <div class="content-container">
+
+
+    <div id="content-container" class="container">
       <div class="row">
         <div class="col">
           <h2>New Users Sign Up Here!</h2>
-          <form class="signUpContainer">
-            <input type="text" name="userName" placeholder="username" />
-            <input type="text" name="password" placeholder="password" />
-            <button type="submit" id="sign-up">submit</button>
+          <form class="signUpContainer" id="sign-up-form-container">
+            <div class="mb-3">
+              <input type="text" name="userName" placeholder="username" />
+            </div>
+            <div class="mb-3">
+              <input type="text" name="password" placeholder="password" />
+            </div>
+            <button type="submit" id="sign-up">Sing up</button>
           </form>
         </div>
-      </div>
-      <div class="row">
         <div class="col">
           <h2>Returning Users Sign In Here!</h2>
-          <form class="signInContainer">
-            <input type="text" name="userName" placeholder="username" />
-            <input type="text" name="password" placeholder="password" />
-            <input type="submit" />
+          <form class="signInContainer" id="sign-in-form-container">
+            <div class="mb-3">
+              <input type="text" name="userName" placeholder="username" />
+            </div>
+            <div class="mb-3">
+              <input type="text" name="password" placeholder="password" />
+            </div>
+            <button type="submit" id="sign-in">Sign In</button>
           </form>
         </div>
       </div>
     </div>
 
-    <!-- <div class="container  " id="date">
-        
-        <h1>January</h1>
-        <p>Wed Jan 25, 2023</p>
-     
-
-      <div id="weekdays">
-        <div class="d-flex flex-wrap ">
-        <div class="p-2">Monday</div>
-        <div class="p-2" >Tuesday</div>
-        <div class="p-2">Wednesday</div>
-        <div class="p-2">Thursday</div>
-        <div class="p-2">Friday</div>
-        <div class="p-2">Saturday</div>
-        <div class="p-2">Sunday</div>
-    
-        </div>
-      </div>
-      <div id="num-days" class="container  ">
-    
-          <div class="row ">
-          <div class="d-flex flex-wrap">
-          <div class="card" style="width: 5rem; height: 5rem;">1</div>
-          <div class="card" style="width: 5rem; height: 5rem;" >2</div>
-          <div class="card" style="width: 5rem; height: 5rem;" >3</div>
-          <div class="card" style="width: 5rem; height: 5rem;">4</div>
-          <div class="card" style="width: 5rem; height: 5rem;">5</div>
-          <div class="card" style="width: 5rem; height: 5rem;">6</div>
-          <div class="card" style="width: 5rem; height: 5rem;">7</div>
-          </div>
-        <div class="d-flex flex-wrap">
-          <div class="card" style="width: 5rem; height: 5rem;" >8</div>
-          <div class="card" style="width: 5rem; height: 5rem;" >9</div>
-          <div class="card" style="width: 5rem; height: 5rem;">10</div>
-          <div class="card" style="width: 5rem; height: 5rem;">11</div>
-          <div class="card" style="width: 5rem; height: 5rem;">12</div>
-          <div class="card" style="width: 5rem; height: 5rem;">13</div>
-          <div class="card" style="width: 5rem; height: 5rem;">14</div>
-         </div>
-         <div class="d-flex flex-wrap">
-          <div class="card" style="width: 5rem; height: 5rem;">15</div>
-          <div class="card" style="width: 5rem; height: 5rem;">16</div>
-          <div class="card" style="width: 5rem; height: 5rem;">17</div>
-          <div class="card" style="width: 5rem; height: 5rem;">18</div>
-          <div class="card" style="width: 5rem; height: 5rem;">19</div>
-          <div class="card" style="width: 5rem; height: 5rem;">20</div>
-          <div class="card" style="width: 5rem; height: 5rem;">21</div>
-        </div>
-        <div class="d-flex flex-wrap">
-          <div class="card" style="width: 5rem; height: 5rem;">23</div>
-          <div class="card" style="width: 5rem; height: 5rem;">24</div>
-          <div class="card" style="width: 5rem; height: 5rem;">25</div>
-          <div class="card" style="width: 5rem; height: 5rem;" >26</div>
-          <div class="card" style="width: 5rem; height: 5rem;">27</div>
-          <div class="card" style="width: 5rem; height: 5rem;">28</div>
-        <div class="card" style="width: 5rem; height: 5rem;">29</div>
-        </div>
-        <div class="d-flex flex-wrap ">
-          <div class="card" style="width: 5rem; height: 5rem;">30</div>
-          <div class="card" style="width: 5rem; height: 5rem;">31</div>
-        </div>
-      </div>
-    </div>
-
-    
-
-     
-        
-       
-      </div>
-    </div>
-    </div>  -->
     <!-- 
                                  LIST HTML -->
-    <div class="container">
-      <h1 class="todotag">Create Your To-Do</h1>
+    <div id="to-do-container" class="d-none">
+      <div class="container">
+        <h1 class="todotag">Create Your To-Do</h1>
 
-      <form id="create-list-form" class="d-flex">
-        <input
-          type="text"
-          name="title"
-          class="form-control"
-          placeholder="Title Your To-do Here"
-          id="title"
-      >
+        <form id="create-list-form" class="d-flex">
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            placeholder="Title Your To-do Here"
+            id="title"
+          />
 
-
-
-        <input type="submit" id="create-list-button" value="Create List" />
-      </form>
-      
-      <h3 id="to-do-list">To Do List</h3>
+          <input type="submit" id="create-list-button" value="Create List" />
+        </form>
+      </div>
+      <div class="d-flex" id="index-lists-container"></div>
+      <div class="d-flex" id="show-lists-container"></div>
+      <div class="container" id="add-act-container"></div>
     </div>
-
-    <div class="index-acts-container">
-      <form id="create-act-form">
-        <input
-          type="text"
-          name="name"
-          class="form-control"
-          placeholder="Enter Activity Name Here"
-          id="act"
-        />
-        <input
-          type="text"
-          name="location"
-          class="form-control"
-          placeholder="Enter The Location of Act Here"
-          id="location"
-        />
-        <input
-          type="checkbox"
-          name="isComplete"
-          id="isComplete"
-          class="d-none"
-        />
-        <input type="submit" value="Add Activity" />
-      </form>
-    </div>
- <div class="d-flex" id="index-lists-container"></div>
-  <div class="d-flex" id="show-lists-container"></div>
-    <div class="container" id="add-act-container">
-     
-    </div>
-
   </body>
 
   <script type="module" src="./scripts/app.js"></script>

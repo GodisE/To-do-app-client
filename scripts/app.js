@@ -38,7 +38,6 @@ const indexListsContainer = document.querySelector("#index-lists-container");
 const showListContainer = document.querySelector("#show-lists-container");
 const addActContainer = document.querySelector("#add-act-container");
 
-
 //user
 signUpContainer.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -54,7 +53,7 @@ signUpContainer.addEventListener("submit", (event) => {
 
 signInContainer.addEventListener("submit", (event) => {
   event.preventDefault();
-  const hide = document.querySelector(".content-container");
+  const hide = document.querySelector("#content-container");
   hide.classList.add("d-none");
 
   const userData = {
@@ -64,25 +63,33 @@ signInContainer.addEventListener("submit", (event) => {
     },
   };
   signIn(userData)
-    
     .then((res) => res.json())
-    .then((res) => signInSuccess(res.token))
-  .catch(console.error);
-   
-    // indexLists()
-    // .then((res) => {
-    //   indexListSuccess(res.list);
+    .then((res) => {
+      return signInSuccess(res.token);
     })
-    
- 
-    
+.then((res) => {
+  return indexLists (res) 
+})
+  
+    .then((res) => res.json())    
+    .then((res) => {
+      console.log(res)
+      return (res.lists);
+    })
+
+    .then((res) => {
+      console.log(res);
+      return indexListSuccess(res);
+    })
+    .catch(onError);
+});
+
 // });
 
 //List apps
 
 createListForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
   const listData = {
     list: {
       title: event.target["title"].value,
@@ -93,16 +100,24 @@ createListForm.addEventListener("submit", (event) => {
   createList(listData)
     .then((res) => res.json())
     .then((res) => {
-     indexListSuccess(res.list);
-     
+      indexListSuccess(res.list);
     })
-    .then
-  (createListSuccess());
+    .then(createListSuccess())
+    .then(() => {
+      addTitleToList();
+    })
 
-  addTitleToList()
-    indexLists()
-    .then((res) => res.json())
-    .then(console.error);
+    .then(() => {
+     
+      return indexLists();
+    })
+
+    .then((res) => {
+      console.log(res);
+      return res.json();
+    })
+
+    .then(onError);
 });
 
 function addTitleToList() {
@@ -117,7 +132,6 @@ function addTitleToList() {
 
   div.appendChild(input);
 
-
   //creating node element to list value of user input
   const node = document.createTextNode(title.value);
   if (node === "undefined") {
@@ -129,9 +143,8 @@ function addTitleToList() {
 }
 
 indexListsContainer.addEventListener("click", (event) => {
- 
   const id = event.target.getAttribute("data-id");
-   console.log(id)
+  console.log(id);
   if (!id) return;
 
   showList(id)
@@ -139,65 +152,48 @@ indexListsContainer.addEventListener("click", (event) => {
     .then((res) => {
       showListSuccess(res.list);
     })
-    .catch(console.error);
-
+    .catch(onError);
 });
-
-
-
-
-
-
 
 showListContainer.addEventListener("submit", (event) => {
   event.preventDefault();
   const id = event.target.getAttribute("data-id");
   console.log(id);
 
-  if(!id) return
+  if (!id) return;
 
   const listData = {
     list: {
-      title: event.target["title"].value
+      title: event.target["title"].value,
     },
   };
   updateList(listData, id)
   .then(updateListSuccess)
-  .catch(console.error);
+  .catch(onError);
 });
-
-
-
-
-
-
-
-
-
-
 
 showListContainer.addEventListener("click", (event) => {
   event.preventDefault();
-  
+
   const id = event.target.getAttribute("data-id");
-console.log(id);
+  console.log(id);
 
   if (!id) return;
 
 
-if(event.target.id === "delete-list-button"){
-  deleteList(id)
-  .then(deleteListSuccess)
-  .then(console.error)
-}
+
+  if (event.target.id === "delete-list-button") {
+    deleteList(id)
+    .then(deleteListSuccess)
+    .catch(onError);
+  }else if (event.target.id === "update-list-button"){
+    updateList(id)
+    .then(updateListSuccess)
+    .catch(onError)
+  }
 
 
-
-  deleteList(id)
-   .then(deleteListSuccess)
-   .catch(console.error)
 });
-
 
 
 //acts apps
@@ -214,13 +210,11 @@ function addActToList() {
   const li = document.createElement("li");
   const p = document.createElement("li");
 
-
   //creating node element to list value of user input
   const node = document.createTextNode(act.value);
   const newNode = document.createTextNode(location.value);
 
   newDiv.appendChild(newNode);
-
 
   div.appendChild(li);
   div.appendChild(p);
@@ -230,23 +224,6 @@ function addActToList() {
   document.getElementById("index-lists-container").appendChild(newDiv);
 }
 
-createActForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const actData = {
-    activity: {
-      name: document.getElementsByName("name")[0].value,
-      location: document.getElementsByName("location")[0].value,
-      isComplete: document.getElementsByName("isComplete")[0].value,
-      // listId: list._id,
-    },
-  };
-
-  console.log(actData);
-  createAct(actData)
-    .then(createListSuccess)
-    .then(addActToList())
-    .catch(onError);
-});
 
 addActContainer.addEventListener("submit", (event) => {
   event.preventDefault();

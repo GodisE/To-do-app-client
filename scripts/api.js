@@ -44,6 +44,7 @@ export const signIn = (data) => {
  
 
 export const createList = (data) => {
+	console.log(store.userToken)
 	return fetch(`http://localhost:8000/lists`, {
 		method: "POST",
 		headers: {
@@ -69,6 +70,7 @@ export const showList = (id) => {
 }
 
 export const indexLists = () => {
+	console.log(store.userToken)
 	return fetch(`http://localhost:8000/lists`, {
 		method: "GET",
 		headers: {
@@ -88,7 +90,7 @@ export const updateList = (data, id) => {
 		headers: {
 			"Accept": "application/json",
 			"Content-Type": "application/json",
-			'Authorization': `Bearer ${store.userToken}`,
+			"Authorization": `Bearer ${store.userToken}`,
 		},
 		body: JSON.stringify(data)
 	})
@@ -99,7 +101,7 @@ export const deleteList = (id) => {
 	return fetch(`http://localhost:8000/lists/${id}`, {
 		method: "DELETE",
 		headers: {
-			'Authorization': `Bearer ${store.userToken}`,
+			Authorization: `Bearer ${store.userToken}`,
 		}
 		
 	})
@@ -113,9 +115,9 @@ export const createAct = (data) => {
 	return fetch(`http://localhost:8000/list`, {
 		method:"POST",
 		headers: {
-			'Accept': 'application/json',
+			Accept: 'application/json',
 			'Content-Type': 'application/json',
-			'Authorization': `Bearer ${store.userToken}`,
+			Authorization: `Bearer ${store.userToken}`,
 		},
 		body: JSON.stringify(data)
 	})
@@ -127,7 +129,7 @@ export const updateAct = (id, data) => {
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json',
-			'Authorization': `Bearer ${store.userToken}`,
+			Authorization: `Bearer ${store.userToken}`,
 		},
 		body: JSON.stringify(data)
 	})
@@ -137,7 +139,7 @@ export const deleteAct = (id) => {
 	return fetch(`http://localhost:8000/list/${id}`, {
 		method: "DELETE",
 		headers: {
-			'Authorization': `Bearer ${store.userToken}`,
+			Authorization: `Bearer ${store.userToken}`,
 		},
 		
 	})
