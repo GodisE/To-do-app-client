@@ -1,3 +1,5 @@
+// In this file you are using semi colons but in your other JavaScript files you are not using them. Pick a style of coding for your project and be consistent with that style as you code through your project
+// Remove all unused imports from api.js and ui.js
 import {
   signUp,
   signIn,
@@ -25,6 +27,7 @@ import {
   indexListSuccess,
 } from "./ui.js";
 
+// Remove unused variables here as well
 //grabbing each card in my html and adding a click event listener
 const cards = document.querySelectorAll(".card");
 const signUpContainer = document.querySelector(".signUpContainer");
@@ -116,6 +119,7 @@ function addTitleToList() {
     div.style.display = "none";
     input.classList.add("d-none");
   }
+  // Remove console log from finished project
   console.log(node);
   div.appendChild(head);
   head.appendChild(node);
@@ -138,6 +142,7 @@ function addActToList() {
   document.getElementById("index-lists-container").appendChild(head);
 }
 
+// `listdata` should be camel case: `listData`
 function addLocation(listdata) {
   //creating a div to
   const div = document.createElement("div");
@@ -156,6 +161,7 @@ function addLocation(listdata) {
   updateButton.id = "update";
   updateButton.dataset.id = `${listdata}`
 
+  // `p` is a bad name for a variable, even if it's referring to a `p` element in HTML still name it `paragraph` or better name it after the contents it will end up holding
   //creating list element
   const p = document.createElement("p");
   //creating node element to list value of user input
@@ -164,6 +170,7 @@ function addLocation(listdata) {
   p.appendChild(updateButton)
   p.appendChild(deleteButton)
 
+  // Remove console logs from finished project
   console.log(p)
   document.getElementById("index-lists-container").appendChild(p);
 }

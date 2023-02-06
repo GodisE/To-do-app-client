@@ -1,7 +1,9 @@
+// Lost of blank space in this file. Make sure to clean it up and not leave random empty lines behind
 import { store } from './store.js'
 
 const messageContainer = document.querySelector(".message")
 const indexListsContainer = document.querySelector("#index-lists-container")
+// Remove unused variables
 const showListContainer = document.querySelector("#show-list-container")
 const createListContainer = document.querySelector("#create-list-index")
 const signUpInContainers = document.querySelector(".content-container")
