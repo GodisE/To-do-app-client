@@ -1,6 +1,5 @@
+// Changing between double and single quotes in this file. Choose one or the other and stick to it
 import { store } from './store.js'
-
-
 
 export const signUp = (data) => {
 	return fetch(`http://localhost:8000/sign-up`, {
@@ -38,10 +37,13 @@ export const signIn = (data) => {
 // }
 
 
- 
+// Love these code comments for your sections of API calls! To make them a little more clear you can add * or = to the heading to make it stand out. So:
+// ========== LIST ACTIONS ===============
+// ********** LIST ACTIONS ***************
+// both of the above show off clearly that this is a section of code.
                      //LIST ACTIONS
- 
 
+// remove unused `userToken` from params
 export const createList = (userToken) => {
 	return fetch(`http://localhost:8000/lists`, {
 		headers: {
@@ -50,15 +52,12 @@ export const createList = (userToken) => {
 	})
 }
 
-
-
 export const showList = (id) => {
 	return fetch(`http://localhost:8000/lists/${id}`, {
 		method: "GET",
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
-	
 	})
 }
 
@@ -67,9 +66,7 @@ export const indexLists = () => {
 		method: "GET",
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
-
 		},
-	
 	})
 }
 
@@ -85,19 +82,17 @@ export const updateList = (data, id) => {
 	})
 }
 
-
 export const deleteList = (id) => {
 	return fetch(`http://localhost:8000/lists/${id}`, {
 		method: "DELETE",
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		}
-		
 	})
 }
 
 
-
+// Same comment as above for heading comments
                      //ACTIVITY ACTIONS
 
 export const createAct = (data, userToken) => {
@@ -129,6 +124,5 @@ export const deleteAct = (id) => {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
-		
 	})
 }
